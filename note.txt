@@ -1,0 +1,17 @@
+flex: sẽ bao gồm 1 flex container chứa
+
+1. main-axis ( vertical axis ( trục x) )
+  
+
+2. cross-axis ( horizontal axis (trục y))
+
+3. flex - item
+
+
+* flex : 1 ==> viết tắt của flex: 1 1 0
+
++ flex-grow : 1 => div sẽ phát triển theo cùng kích thước window
++ flex-shrink : 1 => div sẽ thu nhỏ cùng với kích thước cửa sổ
++ flex-basis: 0 => div không có giá trị bắt đầu và sẽ chiếm màn hình theo kích thước có sẵn
+
+Ex: nếu có 3 div nằm trong wrapper => thì mỗi div sẽ chiếm 33.3% size

@@ -1,0 +1,120 @@
+
+
+.account-page {
+  padding: 50px 0;
+  background: radial-gradient(#fff, #ffd6d6);
+}
+
+.user-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  padding-left: 0;
+  background-color: rgb(253, 225, 63);
+  border-radius: 2px;
+  width: 120px;
+  list-style: none;
+  z-index: 99;
+  display: none;
+  transition: 0.2s;
+}
+
+.user-menu-item a {
+  font-size: 14px;
+  padding: 4px 16px;
+  display: inline-block;
+}
+
+.user-menu :hover {
+  color: #ff4040;
+}
+
+.user-menu::before {
+  content: "";
+  border-width: 20px 27px;
+  border-style: solid;
+  border-color: transparent transparent rgb(248, 222, 71) transparent;
+  position: absolute;
+  right: 20px;
+  top: -29px;
+}
+
+.user-menu::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -7px;
+  right: 4px;
+  width: 100px;
+  height: 10px;
+}
+
+.nav_user:hover .user-menu {
+  display: block;
+}
+
+.single-product {
+  margin-top: 60px;
+}
+
+.single-product .col-2 img {
+  padding: 0;
+}
+
+.single-product .col-2  {
+  padding: 20px;
+}
+
+h4 {
+  color: #555;
+  font-weight: normal;
+}
+
+.single-product h4 {
+  margin: 20px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.single-product select {
+  display: block;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.single-product input {
+  width: 50px;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 20px;
+  margin-right: 10px;
+  border: 1px solid #ff523b;
+}
+
+input:focus {
+  outline: none;
+}
+
+.single-product .fa {
+  color: #ff523b;
+  margin-left: 10px;
+}
+
+.small-img-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-img-col {
+  flex-basis: 24%;
+  cursor: pointer;
+}
+
+
+#title-products-relative {
+  margin-top: 30px;
+}
+
+h2 {
+  font-weight: 600;
+}

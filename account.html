@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account | Redstore</title>
+    <link rel="stylesheet" href="css/shared.css" />
+    <link rel="stylesheet" href="css/account.css" />
+    <!--Font awesome-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="overlay hidden" id="overlay">
+      <div class="circle"></div>
+    </div>
+    <div class="container" id="container"></div>
+    <div class="account-page" id="account-page"></div>
+    <div class="footer" id="footer"></div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyByjv516Oqz0pqH4j_vpzLcisxO7mFTtu8",
+        authDomain: "redstore-shop.firebaseapp.com",
+        projectId: "redstore-shop",
+        storageBucket: "redstore-shop.appspot.com",
+        messagingSenderId: "265450317537",
+        appId: "1:265450317537:web:cc8a1a8a9e9efa338cf9a0",
+        measurementId: "G-94NVL1B9P6",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+    </script>
+
+    <script src="./js/ui/account/account.js" type="module"></script>
+  </body>
+</html>
