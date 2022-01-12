@@ -180,6 +180,70 @@ async function getFeaturedProduct() {
   return feature_product;
 }
 
+/*---------------------------------------------------------------*/
+export const getProductDetail = async (evt) => {
+  evt.stopPropagation();
+
+  setLoading(true);
+
+  let product = evt.target.parentElement;
+  let product_id = product.getAttribute("data-id");
+
+  const categories = [];
+
+  await db
+    .collection("categories")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.docs.forEach((doc) => {
+        categories.push(doc.data().products);
+      });
+    });
+
+  let categories_size = categories.length;
+
+  let check = 0;
+  let product_detail;
+
+  while (!product_detail) {
+    categories[check].map((item, index) => {
+      if (item.id === product_id) {
+        product_detail = item;
+
+        // remove current index
+        categories[check].splice(index, 1);
+
+        let relative_list_product = [];
+
+        let count = 0;
+
+        let temp = index;
+
+        // create relative product list
+        while (count < 4) {
+          if (temp >= categories[check].length) {
+            temp = 0;
+          }
+
+          relative_list_product.push(categories[check][temp]);
+          temp++;
+          count++;
+        }
+
+        sessionStorage.setItem(
+          "list_product_relative",
+          JSON.stringify(relative_list_product)
+        );
+      }
+    });
+    check++;
+  }
+
+  sessionStorage.setItem("product_detail", JSON.stringify(product_detail));
+  setLoading(false);
+  location = "./product_details.html";
+};
+
 async function getLatestProduct() {
   const categories = [];
   await db
@@ -215,11 +279,6 @@ async function getLatestProduct() {
 }
 
 export function renderHomeProduct() {
-  let indexList = 0;
-  let count = 0;
-  let checked = 1;
-  const featured_product = [];
-
   getFeaturedProduct().then((productList) => {
     let home_feature_product = new ProductComponent(productList);
 
@@ -266,7 +325,6 @@ export function renderHomeTestimonial() {
   testimonial.appendChild(testimonialComponent.render());
 }
 
-
 export function renderProductDetail() {
   let product_detail = document.getElementById("product-detail");
   let products_relative = document.getElementById("products-relative");
@@ -294,15 +352,47 @@ export function renderProductDetail() {
   h2.innerHTML = `Related Products`;
 
   let p = document.createElement("p");
-  p.innerHTML = 'View more &#8594'
-  p.style.cursor = 'pointer';
+  p.innerHTML = "View more &#8594";
+  p.style.cursor = "pointer";
+  p.addEventListener("click", () => {
+    location = "./products.html";
+  });
 
   row.appendChild(h2);
   row.appendChild(p);
 
-
   product_detail.appendChild(detail_component.render());
   products_relative.appendChild(row);
   products_relative.appendChild(products_relative_component.render());
-  
+}
+/*---------------------- Get All Product -------------------- */
+
+async function getAllProduct() {
+  const categories = [];
+  await db
+    .collection("categories")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.docs.forEach((doc) => {
+        categories.push(doc.data().products);
+      });
+    });
+
+  let all_product = [];
+
+  categories.map((category) => {
+    all_product = [...all_product, ...category];
+  });
+
+  return all_product;
+}
+
+export function renderAllProducts() {
+  let product_list = getAllProduct().then((products) => {
+    let product_component = new ProductComponent(products);
+
+    const all_product = document.getElementById("all-product");
+
+    all_product.appendChild(product_component.render());
+  });
 }

@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Details - Redstore</title>
+    <title>All Product - RedStore</title>
     <link rel="stylesheet" href="css/shared.css" />
-    <link rel="stylesheet" href="css/product_detail.css" />
+    <link rel="stylesheet" href="css/product.css" />
     <!--Font awesome-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
       rel="stylesheet"
@@ -22,13 +25,12 @@
   </head>
   <body>
     <div class="overlay hidden" id="overlay">
-        <div class="circle"></div>
-      </div>
-      <div class="container" id="container"></div>
-      <div class="small-container single-product" id="product-detail"></div>
-      <div class="small-container" id="title-products-relative"></div>
-      <div class="small-container" id="products-relative"></div>
-      <div class="footer" id="footer"></div>
+      <div class="circle"></div>
+    </div>
+    <div class="container" id="container"></div>
+    <div class="categories" id="categories"></div>
+    <div class="small-container" id="all-product"></div>
+    <div class="footer" id="footer"></div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 
@@ -53,6 +55,6 @@
       const db = firebase.firestore();
     </script>
 
-    <script type="module" src="./js/ui/product_details/product_detail.js"></script>
+    <script type="module" src="./js/ui/product/product.js"></script>
   </body>
 </html>

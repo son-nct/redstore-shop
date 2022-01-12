@@ -1,6 +1,6 @@
 import { getProductDetail } from '../shared/shared.js';
 
-class ProductsRelativeComponent {
+class ProductComponent {
   $row;
 
   constructor(productList = []) {
@@ -44,6 +44,7 @@ class ProductsRelativeComponent {
   render() {
     return this.$row;
   }
+
 }
 
-export { ProductsRelativeComponent }
+export { ProductComponent };

@@ -1,3 +1,4 @@
+import { getProductDetail } from '../shared/shared.js';
 class ProductComponent {
   $row;
 
@@ -8,7 +9,7 @@ class ProductComponent {
     for (let i = 0; i < productList.length; i++) {
       let col_4 = document.createElement("div");
       col_4.classList.add("col-4");
-      col_4.addEventListener("click", this.getProductDetail);
+      col_4.addEventListener("click", getProductDetail);
 
       col_4.setAttribute("data-id", productList[i].id);
 
@@ -43,66 +44,6 @@ class ProductComponent {
     return this.$row;
   }
 
-  getProductDetail = async (evt) => {
-    evt.stopPropagation();
-
-    let product = evt.target.parentElement;
-    let product_id = product.getAttribute("data-id");
-
-    const categories = [];
-
-    await db
-      .collection("categories")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.docs.forEach((doc) => {
-          categories.push(doc.data().products);
-        });
-      });
-
-    let categories_size = categories.length;
-
-    let check = 0;
-    let product_detail;
-
-    while (!product_detail) {
-      categories[check].map((item, index) => {
-        if (item.id === product_id) {
-          product_detail = item;
-
-          // remove current index
-          categories[check].splice(index, 1);
-
-          let relative_list_product = [];
-
-          let count = 0;
-
-          let temp = index;
-
-          // create relative product list
-          while (count < 4) {
-            if (temp >= categories[check].length) {
-              temp = 0;
-            }
-
-            relative_list_product.push(categories[check][temp]);
-            temp++;
-            count++;
-          }
-
-          sessionStorage.setItem(
-            "list_product_relative",
-            JSON.stringify(relative_list_product)
-          );
-        }
-      });
-      check++;
-    }
-
-    sessionStorage.setItem("product_detail", JSON.stringify(product_detail));
-
-    location = "./product_details.html";
-  };
 }
 
 export { ProductComponent };

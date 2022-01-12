@@ -1,0 +1,136 @@
+.account-page {
+  padding: 50px 0;
+  background: radial-gradient(#fff, #ffd6d6);
+}
+
+.user-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  padding-left: 0;
+  background-color: rgb(253, 225, 63);
+  border-radius: 2px;
+  width: 120px;
+  list-style: none;
+  z-index: 99;
+  display: none;
+  transition: 0.2s;
+}
+
+.user-menu-item a {
+  font-size: 14px;
+  padding: 4px 16px;
+  display: inline-block;
+}
+
+.user-menu :hover {
+  color: #ff4040;
+}
+
+.user-menu::before {
+  content: "";
+  border-width: 20px 27px;
+  border-style: solid;
+  border-color: transparent transparent rgb(248, 222, 71) transparent;
+  position: absolute;
+  right: 20px;
+  top: -29px;
+}
+
+.user-menu::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -7px;
+  right: 4px;
+  width: 100px;
+  height: 10px;
+}
+
+.nav_user:hover .user-menu {
+  display: block;
+}
+
+/*-------------------- introduction content------------------*/
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.col-2 {
+  flex-basis: 50%;
+  min-width: 300px;
+}
+
+.col-2 img {
+  max-width: 100%;
+  padding: 50px 0;
+}
+
+.col-2 h1 {
+  font-size: 50px;
+  line-height: 60px;
+  margin: 25px 0;
+}
+
+.header {
+  background: radial-gradient(#fff, #ffd6d6);
+}
+
+.header .row {
+  margin-top: 70px;
+}
+
+.user-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  padding-left: 0;
+  background-color: #fff;
+  border-radius: 2px;
+  width: 120px;
+  list-style: none;
+  z-index: 99;
+  display: none;
+  transition: 0.2s;
+}
+
+.user-menu-item a {
+  font-size: 14px;
+  padding: 4px 16px;
+  display: inline-block;
+}
+
+.user-menu :hover {
+  color: #f45d37;
+}
+
+.user-menu::before {
+  content: "";
+  border-width: 20px 27px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+  position: absolute;
+  right: 20px;
+  top: -29px;
+}
+
+.user-menu::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -7px;
+  right: 4px;
+  width: 100px;
+  height: 10px;
+}
+
+.nav_user:hover .user-menu {
+  display: block;
+}
+
+.categories {
+  margin: 70px 0;
+}
