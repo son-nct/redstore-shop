@@ -23,7 +23,7 @@ class HomeIntroComponent {
 
         this.$anchor = document.createElement('a');
         this.$anchor.classList.add('btn');
-        this.$anchor.href = "";
+        this.$anchor.href = "#feature-product";
         this.$anchor.innerHTML = btnContent;
 
         this.$column1.appendChild(this.$title);

@@ -7,6 +7,8 @@ import { OfferComponent } from "../home/home-offer.js";
 import { TestimonialComponent } from "../home/home-testimonial.js";
 import { ProductDetailComponent } from "../product_details/product_detail_component.js";
 import { ProductsRelativeComponent } from "../product_details/products_relative_component.js";
+import { ProductFilterComponent } from "../product/product-filter.js";
+import { PagingComponent } from "../product/product-page.js";
 
 export const linkLogo = "./images/logo.png";
 export const cartImg = "./images/cart.png";
@@ -86,6 +88,8 @@ const content_col4 = {
   "copyright-content": "Copyright 2021 - Nguyễn Công Thái Sơn",
 };
 /*************************************************** */
+
+const filterList = ["Default Sorting", "Short by price", "Short by rating"];
 
 /**Navbar for everyone */
 
@@ -367,7 +371,7 @@ export function renderProductDetail() {
 }
 /*---------------------- Get All Product -------------------- */
 
-async function getAllProduct() {
+export async function setAllProductToSessionStorage() {
   const categories = [];
   await db
     .collection("categories")
@@ -384,15 +388,28 @@ async function getAllProduct() {
     all_product = [...all_product, ...category];
   });
 
-  return all_product;
+  sessionStorage.setItem("all-products", JSON.stringify(all_product));
 }
 
 export function renderAllProducts() {
-  let product_list = getAllProduct().then((products) => {
-    let product_component = new ProductComponent(products);
+  const all_product = document.getElementById("all-product");
 
-    const all_product = document.getElementById("all-product");
+  setLoading(true);
+  setAllProductToSessionStorage().then(() => {
+    let paging_component = new PagingComponent();
 
-    all_product.appendChild(product_component.render());
+    if (window.performance) {
+      let products = JSON.parse(sessionStorage.getItem("product_list_paging"));
+      let product_component = new ProductComponent(products);
+
+      let filter_component = new ProductFilterComponent(filterList);
+
+      setLoading(false);
+      
+      all_product.appendChild(filter_component.render());
+
+      all_product.appendChild(product_component.render());
+      all_product.appendChild(paging_component.render());
+    }
   });
 }

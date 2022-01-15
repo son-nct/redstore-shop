@@ -31,6 +31,15 @@ class Navbar {
         var anchor = document.createElement("a");
         anchor.href = `${item.toLowerCase()}.html`;
 
+        if (index == 2) {
+          anchor.href = "#footer";
+        }
+
+        if (index == 3) {
+          anchor.href =
+            "https://help.shopee.ph/s/article/How-can-I-contact-Shopee-Customer-Service-1542962770623#:~:text=Calls%3A%2002%208%20880%205200,7%20(in%2Dapp%20only)";
+        }
+
         anchor.innerHTML = item;
         li.appendChild(anchor);
 
@@ -82,6 +91,15 @@ class Navbar {
 
           var anchor = document.createElement("a");
           anchor.href = `${item.toLowerCase()}.html`;
+
+          if (index == 2) {
+            anchor.href = "#footer";
+          }
+
+          if (index == 3) {
+            anchor.href =
+              "https://help.shopee.ph/s/article/How-can-I-contact-Shopee-Customer-Service-1542962770623#:~:text=Calls%3A%2002%208%20880%205200,7%20(in%2Dapp%20only)";
+          }
 
           anchor.innerHTML = item;
           li.appendChild(anchor);

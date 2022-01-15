@@ -74,6 +74,9 @@ class ProductDetailComponent {
     let btn_add_to_cart = document.createElement("a");
     btn_add_to_cart.classList.add("btn");
     btn_add_to_cart.innerHTML = "Add To Cart";
+    btn_add_to_cart.style.cursor = "pointer";
+
+    btn_add_to_cart.addEventListener("click", this.addToCart);
 
     let title_description = document.createElement("h3");
     title_description.innerHTML =
@@ -100,8 +103,6 @@ class ProductDetailComponent {
 
     this.$row.appendChild(col1);
     this.$row.appendChild(col2);
-
-
   }
 
   render() {
@@ -112,6 +113,15 @@ class ProductDetailComponent {
     let product_img = document.getElementById("product-img");
 
     product_img.src = $evt.target.src;
+  };
+
+  addToCart = ($evt) => {
+    swal({
+      title: "Added Product Success!",
+      icon: "success",
+    }).then(function () {
+      location.reload();
+    });
   };
 }
 
